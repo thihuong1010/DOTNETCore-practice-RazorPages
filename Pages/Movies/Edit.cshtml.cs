@@ -20,9 +20,11 @@ namespace RazorPagesMovie.Pages.Movies
             _context = context;
         }
 
+        // BindProperty enables model binding
         [BindProperty]
         public Movie Movie { get; set; } = default!;
 
+        // OnGetAsync method fetches the movie from db and return the Page method
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null || _context.Movie == null)
@@ -36,6 +38,7 @@ namespace RazorPagesMovie.Pages.Movies
                 return NotFound();
             }
             Movie = movie;
+            // Page() method renders the Pages/Movies/Edit.cshtml Razor page
             return Page();
         }
 
